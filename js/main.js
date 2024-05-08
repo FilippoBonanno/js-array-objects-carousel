@@ -52,6 +52,19 @@ for (const slide of images) {
     container.innerHTML += slideHtml;
 };
 
+const subContainer = document.getElementById("sub");
+for (const slide of images) {
+    
+
+    let sub_slideHtml = `
+    <div class="sub_slide">
+        <img src="${slide.image}">
+    </div>
+    `;
+
+    subContainer.innerHTML += sub_slideHtml;
+};
+
 // rendo visibile la prima slide
 let slideActive = 0;
 document.querySelectorAll(".slide")[slideActive].classList.add("active");
@@ -102,15 +115,3 @@ prevBtn.addEventListener("click", function() {
 });
 
 
-// const subContainer = document.getElementById("sub");
-// for (const slide of images) {
-    
-
-//     let sub_slideHtml = `
-//     <div class="sub_slide">
-//         <img src="${slide.image}">
-//     </div>
-//     `;
-
-//     subContainer.innerHTML += sub_slideHtml;
-// };
