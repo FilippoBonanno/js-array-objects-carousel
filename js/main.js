@@ -1,68 +1,3 @@
-// // Recupero tutti gli elementi necessari da gestire
-// let slides = document.getElementsByClassName("slide");
-// console.log(slides);
-// let imgActive;
-// let nextSlide;
-
-// // INSERISCO UN EVENTLISTNER CHE SOLO AL CLICK MI INCLUDA TUTTO QUELLO CHE AVEVO INSERITO
-// document.getElementById("next").addEventListener("click", function () {
-//     // CREO UN CICLO CHE AUMENTI DI 1 E CHE FINISCA QUANDO ARRIVA A < DI 5 IN QUESTO CASO
-//     for (let i = 0; i < slides.length; i++) {
-//         const slide = slides[i];
-//         console.log(i);
-
-//         // SE CONTIENE LA CLASSE ACTIVE GLIELA TOLGO
-//         if (slide.classList.contains("active")) {
-//             //se si, rimuovo la classe active
-//             slide.classList.remove("active");
-//             //e prendo nota dell'indice
-//             imgActive = i;
-//             console.log("Ho rimosso la classe active dall'elemento: ", i);
-//         }
-//     }
-
-//     // ADESSO DICO CHE LA SLIDE SUCCESSIVA è QUELLA ATTIVA + 1
-//     nextSlide = imgActive + 1;
-//     console.log (nextSlide);
-
-//     if (nextSlide >= slides.length) {
-//         nextSlide = 0;
-//     }
-
-//     // METTO ACTIVE ALLA SLIDE SUCCESSIVA
-//     slides[nextSlide].classList.add("active");
-//     console.log (`classe attiva: ${nextSlide}`);
-// });
-
-// // INSERISCO UN EVENTLISTNER CHE SOLO AL CLICK MI INCLUDA TUTTO QUELLO CHE AVEVO INSERITO
-// document.getElementById("prev").addEventListener("click", function () {
-//     // CREO UN CICLO CHE AUMENTI DI 1 E CHE FINISCA QUANDO ARRIVA A < DI 5 IN QUESTO CASO
-//     for (let i = 0; i < slides.length; i++) {
-//         const slide = slides[i];
-//         console.log(i);
-
-//         // SE CONTIENE LA CLASSE ACTIVE GLIELA TOLGO
-//         if (slide.classList.contains("active")) {
-//             //se si, rimuovo la classe active
-//             slide.classList.remove("active");
-//             //e prendo nota dell'indice
-//             imgActive = i;
-//             console.log("Ho rimosso la classe active dall'elemento: ", i);
-//         }
-//     }
-
-//     // ADESSO DICO CHE LA SLIDE SUCCESSIVA è QUELLA ATTIVA - 1
-//     nextSlide = imgActive - 1;
-//     console.log (nextSlide);
-
-//      if (nextSlide < 0) {
-//          nextSlide = 4;
-//     }
-
-//     // METTO ACTIVE ALLA SLIDE SUCCESSIVA che adesso sarebbe quella precedente
-//     slides[nextSlide].classList.add("active");
-//     console.log (`classe attiva: ${nextSlide}`);
-// });
 
 
 const images = [
@@ -104,7 +39,7 @@ const images = [
 
 const container = document.getElementById("main");
 for (const slide of images) {
-    console.log("for..of", slide);
+    
 
     let slideHtml = `
     <div class="slide">
@@ -115,8 +50,67 @@ for (const slide of images) {
     `;
 
     container.innerHTML += slideHtml;
-}
+};
 
 // rendo visibile la prima slide
 let slideActive = 0;
 document.querySelectorAll(".slide")[slideActive].classList.add("active");
+
+// seleziono il mio pulsante next con una variabile
+let nextBtn = document.getElementById("btn_down");
+
+// creo un event listner al click del mio button
+nextBtn.addEventListener("click", function() {
+    
+    // rimuovo la classe active dallìelemento attivo
+    document.querySelectorAll(".slide")[slideActive].classList.remove("active");
+
+
+    // se il mio slideActive va sopra il 4 torna a 0
+    if (slideActive >= images.length - 1) {
+        console.log("maggiore di 4");
+        slideActive = 0;
+    } else {
+         // ad ogni click slideActive lo aumento di 1
+        slideActive++;
+    };
+
+     // do la classe active all'elemento successivo
+     document.querySelectorAll(".slide")[slideActive].classList.add("active");
+});
+
+// seleziono il pulsante prev in una variabile
+let prevBtn = document.getElementById("btn_up");
+
+// creo un event listner al click del mio button
+prevBtn.addEventListener("click", function() {
+    
+    // rimuovo la classe active dallìelemento attivo
+    document.querySelectorAll(".slide")[slideActive].classList.remove("active");
+
+    // se il mio slideActive va sotto lo 0 torna a 4 
+    if (slideActive <= 0) {
+        console.log("maggiore di 4");
+        slideActive = 4;
+    } else {
+         // ad ogni click slideActive lo diminuisco di 1
+        slideActive--;
+    };
+
+     // do la classe active all'elemento successivo
+     document.querySelectorAll(".slide")[slideActive].classList.add("active");
+});
+
+
+// const subContainer = document.getElementById("sub");
+// for (const slide of images) {
+    
+
+//     let sub_slideHtml = `
+//     <div class="sub_slide">
+//         <img src="${slide.image}">
+//     </div>
+//     `;
+
+//     subContainer.innerHTML += sub_slideHtml;
+// };
