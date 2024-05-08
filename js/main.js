@@ -52,6 +52,7 @@ for (const slide of images) {
     container.innerHTML += slideHtml;
 };
 
+// secondo container BONUS
 const subContainer = document.getElementById("sub");
 for (const slide of images) {
     
@@ -68,6 +69,7 @@ for (const slide of images) {
 // rendo visibile la prima slide
 let slideActive = 0;
 document.querySelectorAll(".slide")[slideActive].classList.add("active");
+document.querySelectorAll(".sub_slide")[slideActive].classList.add("sub_active");
 
 // seleziono il mio pulsante next con una variabile
 let nextBtn = document.getElementById("btn_down");
@@ -77,6 +79,7 @@ nextBtn.addEventListener("click", function() {
     
     // rimuovo la classe active dallìelemento attivo
     document.querySelectorAll(".slide")[slideActive].classList.remove("active");
+    document.querySelectorAll(".sub_slide")[slideActive].classList.remove("sub_active");
 
 
     // se il mio slideActive va sopra il 4 torna a 0
@@ -89,7 +92,9 @@ nextBtn.addEventListener("click", function() {
     };
 
      // do la classe active all'elemento successivo
-     document.querySelectorAll(".slide")[slideActive].classList.add("active");
+    document.querySelectorAll(".slide")[slideActive].classList.add("active");
+    document.querySelectorAll(".sub_slide")[slideActive].classList.add("sub_active");
+
 });
 
 // seleziono il pulsante prev in una variabile
@@ -100,6 +105,8 @@ prevBtn.addEventListener("click", function() {
     
     // rimuovo la classe active dallìelemento attivo
     document.querySelectorAll(".slide")[slideActive].classList.remove("active");
+    document.querySelectorAll(".sub_slide")[slideActive].classList.remove("sub_active");
+
 
     // se il mio slideActive va sotto lo 0 torna a 4 
     if (slideActive <= 0) {
@@ -112,6 +119,7 @@ prevBtn.addEventListener("click", function() {
 
      // do la classe active all'elemento successivo
      document.querySelectorAll(".slide")[slideActive].classList.add("active");
-});
+    document.querySelectorAll(".sub_slide")[slideActive].classList.add("sub_active");
 
+});
 
